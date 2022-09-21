@@ -15,8 +15,8 @@ import {
 import { FinancialPicture } from "../../types/types";
 
 type Props = {
-  info: FinancialPicture | undefined;
-  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | undefined>>;
+  info: FinancialPicture | {};
+  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | {}>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
@@ -33,7 +33,7 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<FormInput>();
+  } = useForm<FormInput>({ defaultValues: { ...info } });
 
   function onSubmit(values: FormInput) {
     if (info) setInfo({ ...info, ...values });
@@ -133,7 +133,7 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
           isLoading={isSubmitting}
           type="submit"
         >
-          To step 3
+          Save and go to step 3
         </Button>
       </HStack>
     </form>

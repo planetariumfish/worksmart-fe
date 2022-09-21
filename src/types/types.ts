@@ -5,6 +5,7 @@ export type User = {
 };
 
 export type FinancialPicture = {
+  year: number;
   netsales: number;
   cogs: number;
   sga: number;
@@ -25,6 +26,5 @@ export type FinancialPicture = {
   overdraft: number;
   intpayable: number;
   otherpayable: number;
-  cashprev: number;
   divsnow: number;
 };

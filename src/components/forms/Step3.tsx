@@ -13,15 +13,14 @@ import {
 import { FinancialPicture } from "../../types/types";
 
 type Props = {
-  info: FinancialPicture | undefined;
-  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | undefined>>;
+  info: FinancialPicture | {};
+  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | {}>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type FormInput = {
   inventories: number;
   receivables: number;
-  cashnow: number;
   otherliquid: number;
   payable: number;
   overdraft: number;
@@ -34,7 +33,7 @@ const Step3 = ({ info, setInfo, setStep }: Props) => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<FormInput>();
+  } = useForm<FormInput>({ defaultValues: { ...info } });
 
   function onSubmit(values: FormInput) {
     if (info) setInfo({ ...info, ...values });
@@ -72,20 +71,7 @@ const Step3 = ({ info, setInfo, setStep }: Props) => {
             {errors.receivables && errors.receivables.message}
           </FormErrorMessage>
         </FormControl>
-        <FormControl isInvalid={!!errors.cashnow}>
-          <FormLabel htmlFor="cashnow">Current Cash</FormLabel>
-          <Input
-            bg="white"
-            id="cashnow"
-            type="number"
-            {...register("cashnow", {
-              required: "This is required",
-            })}
-          />
-          <FormErrorMessage>
-            {errors.cashnow && errors.cashnow.message}
-          </FormErrorMessage>
-        </FormControl>
+
         <FormControl isInvalid={!!errors.otherliquid}>
           <FormLabel htmlFor="otherliquid">Other Liquid Assets</FormLabel>
           <Input
@@ -167,7 +153,7 @@ const Step3 = ({ info, setInfo, setStep }: Props) => {
           isLoading={isSubmitting}
           type="submit"
         >
-          To step 4
+          Save and go to step 4
         </Button>
       </HStack>
     </form>

@@ -3,13 +3,14 @@ import React from "react";
 import Step1 from "../components/forms/Step1";
 import Step2 from "../components/forms/Step2";
 import Step3 from "../components/forms/Step3";
+import Step4 from "../components/forms/Step4";
 import { FinancialPicture } from "../types/types";
 
 type Props = {};
 
 const Input = (props: Props) => {
   const [step, setStep] = React.useState<number>(1);
-  const [info, setInfo] = React.useState<FinancialPicture>();
+  const [info, setInfo] = React.useState<FinancialPicture | {}>({});
 
   return (
     <Box w="80%" minH="60vh" px="2rem" display="flex" justifyContent="center">
@@ -31,7 +32,9 @@ const Input = (props: Props) => {
         {step === 3 && (
           <Step3 info={info} setInfo={setInfo} setStep={setStep} />
         )}
-        {step === 4 && <></>}
+        {step === 4 && (
+          <Step4 info={info} setInfo={setInfo} setStep={setStep} />
+        )}
         <Box mt={5}>
           <SimpleGrid gap={2} columns={4}>
             <Box

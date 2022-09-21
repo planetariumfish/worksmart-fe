@@ -9,16 +9,18 @@ import {
   SimpleGrid,
   HStack,
   Spacer,
+  Select,
 } from "@chakra-ui/react";
 import { FinancialPicture } from "../../types/types";
 
 type Props = {
-  info: FinancialPicture | undefined;
-  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | undefined>>;
+  info: FinancialPicture | {};
+  setInfo: React.Dispatch<React.SetStateAction<FinancialPicture | {}>>;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type FormInput = {
+  year: number;
   netsales: number;
   cogs: number;
   sga: number;
@@ -33,15 +35,49 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<FormInput>();
+  } = useForm<FormInput>({ defaultValues: { ...info } });
 
   function onSubmit(values: FormInput) {
     if (info) setInfo({ ...info, ...values });
     setStep(2);
   }
+  const options = [];
+  const date = new Date();
+  const year = date.getFullYear();
+  {
+    for (let i = year; i > 1970; i--) {
+      options.push(<option value={i}>{i}</option>);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <FormControl
+        isInvalid={!!errors.year}
+        mb={5}
+        display="flex"
+        width="100%"
+        justifyContent="center"
+      >
+        <HStack width="50%">
+          <FormLabel htmlFor="year" sx={{ whiteSpace: "nowrap" }}>
+            Records for year:
+          </FormLabel>
+          <Select
+            bg="white"
+            id="year"
+            placeholder="Choose year"
+            {...register("year", {
+              required: "This is required",
+            })}
+          >
+            {options}
+          </Select>
+          <FormErrorMessage>
+            {errors.year && errors.year.message}
+          </FormErrorMessage>
+        </HStack>
+      </FormControl>
       <SimpleGrid columns={2} spacingX="2rem" spacingY="1rem">
         <FormControl isInvalid={!!errors.netsales}>
           <FormLabel htmlFor="netsales">Net Sales (Current year)</FormLabel>
@@ -154,7 +190,7 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
           isLoading={isSubmitting}
           type="submit"
         >
-          To step 2
+          Save and go to step 2
         </Button>
       </HStack>
     </form>
