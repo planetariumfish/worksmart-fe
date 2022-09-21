@@ -1,6 +1,7 @@
 import React from "react";
-import {Chart} from 'react-google-charts';
-
+import { Chart } from "react-google-charts";
+import { User } from "../contexts/user.context";
+import axios from "../utils/axiosClient";
 
 type Props = {};
 
@@ -21,8 +22,18 @@ export const data = [
   ["Regular Net Profit Growth Rate", 0.688909579, "gold", null],
   ["Gross Profit to Sales", 0.6023877093, "color: #e5e4e2", null],
   ["Cash Reinvestment %", 0.3810401997, "color: #7f96ff", null],
-  ["Research and development expense rate", 0.0001039086, "color: #7f96ff", null],
-  ["Interest Coverage Ratio (Interest expense to EBIT)", 0.5645438572, "color: #E56399", null],
+  [
+    "Research and development expense rate",
+    0.0001039086,
+    "color: #7f96ff",
+    null,
+  ],
+  [
+    "Interest Coverage Ratio (Interest expense to EBIT)",
+    0.5645438572,
+    "color: #E56399",
+    null,
+  ],
   ["Equity to Liability", 0.0253738162, "color: #fb8500", null],
   ["Retained Earnings to Total Assets", 0.9195777128, "color: #8338ec", null],
   ["Current Ratio", 0.0045990496, "color: #e63946", null],
@@ -40,17 +51,29 @@ export const options = {
 };
 
 const Dashboard = (props: Props) => {
+  const { user, setUser } = React.useContext(User);
 
- 
-  return <div className="d-flex justify-content-center ms-5">
-<Chart
- chartType="BarChart"
- data={data}
- options={options}
- width="100%"
- height="400px"
-/>
-  </div>;
+  const validateUser = async () => {
+    try {
+      const user = await axios.get("/api/user/validate");
+      console.log(user.data[0]);
+      // setUser(user.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <div className="d-flex justify-content-center ms-5">
+      <Chart
+        chartType="BarChart"
+        data={data}
+        options={options}
+        width="100%"
+        height="400px"
+      />
+    </div>
+  );
 };
 
 export default Dashboard;
