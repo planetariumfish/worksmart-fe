@@ -1,12 +1,26 @@
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { FinancialPicture } from "../types/types";
+import axios from "axios";
 
 type Props = {};
 
 const Input = (props: Props) => {
   const [step, setStep] = React.useState<number>(1);
   const [info, setInfo] = React.useState<FinancialPicture | {}>();
+  const [user, setUser]= React.useState<object>({});
+
+  const validateUser = async () => {
+    try{
+      const user = await axios.get("http://localhost:8080/api/user/validate", {withCredentials: true});
+      console.log(user.data[0]);
+      // setUser(user.data);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {validateUser()},[])
 
   return (
     <Box w="80%" minH="60vh" px="2rem" display="flex" justifyContent="center">
