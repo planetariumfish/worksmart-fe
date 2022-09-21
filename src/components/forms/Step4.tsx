@@ -9,10 +9,11 @@ import {
   SimpleGrid,
   HStack,
   Spacer,
-  Box,
-  Heading,
 } from "@chakra-ui/react";
 import { FinancialPicture } from "../../types/types";
+import { useMutation } from "@tanstack/react-query";
+import axios from "../../utils/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   info: FinancialPicture | {};
@@ -32,10 +33,24 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
     formState: { errors, isSubmitting },
   } = useForm<FormInput>({ defaultValues: { ...info } });
 
+  const navigate = useNavigate();
+
   function onSubmit(values: FormInput) {
     if (info) setInfo({ ...info, ...values });
-    setStep(3);
+    if (Object.keys(info).length > 0) mutate(info as FinancialPicture);
   }
+
+  const { mutate, isLoading } = useMutation(
+    (data: FinancialPicture) => {
+      return axios.post("/api/company/submit", data);
+    },
+    {
+      onSuccess: (response) => {
+        setStep(1);
+        navigate("/dashboard");
+      },
+    }
+  );
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -71,12 +86,7 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
       </SimpleGrid>
       <HStack w="100%" my={3}>
         <Spacer />
-        <Button
-          mt={4}
-          colorScheme="teal"
-          isLoading={isSubmitting}
-          type="submit"
-        >
+        <Button mt={4} colorScheme="teal" isLoading={isLoading} type="submit">
           Submit all info
         </Button>
       </HStack>
