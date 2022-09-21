@@ -8,9 +8,15 @@ import Input from "./pages/Input";
 
 function App() {
   return (
-    <Box width="100vw" minH="100vh">
+    <Box
+      width="100vw"
+      minH="100vh"
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
       <NavBar />
-      <Box h="3rem" />
+      <Box h="3.5rem" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />

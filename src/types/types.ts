@@ -15,6 +15,8 @@ export type FinancialPicture = {
   fixedassets: number;
   debt: number;
   equity: number;
+  employees: number;
+  daystopayment: number;
   inventories: number;
   receivables: number;
   cashnow: number;

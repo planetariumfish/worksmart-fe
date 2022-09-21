@@ -1,12 +1,14 @@
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
+import Step1 from "../components/forms/Step1";
+import Step2 from "../components/forms/Step2";
 import { FinancialPicture } from "../types/types";
 
 type Props = {};
 
 const Input = (props: Props) => {
   const [step, setStep] = React.useState<number>(1);
-  const [info, setInfo] = React.useState<FinancialPicture | {}>();
+  const [info, setInfo] = React.useState<FinancialPicture>();
 
   return (
     <Box w="80%" minH="60vh" px="2rem" display="flex" justifyContent="center">
@@ -18,12 +20,16 @@ const Input = (props: Props) => {
         position="relative"
         w="100%"
       >
-        <Heading>Step {step}</Heading>
-        {step === 1 && <></>}
-        {step === 2 && <></>}
+        <Heading mb={3}>Step {step}</Heading>
+        {step === 1 && (
+          <Step1 info={info} setInfo={setInfo} setStep={setStep} />
+        )}
+        {step === 2 && (
+          <Step2 info={info} setInfo={setInfo} setStep={setStep} />
+        )}
         {step === 3 && <></>}
         {step === 4 && <></>}
-        <Box position="absolute" bottom="1rem" right="1rem">
+        <Box mt={5}>
           <SimpleGrid gap={2} columns={4}>
             <Box
               bg={step === 1 ? "teal.500" : "gray.200"}
