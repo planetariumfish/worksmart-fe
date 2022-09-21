@@ -11,7 +11,7 @@ import {
   MenuList,
   Spacer,
 } from "@chakra-ui/react";
-import axios from "axios";
+import axios from "../../utils/axiosClient";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../contexts/user.context";
