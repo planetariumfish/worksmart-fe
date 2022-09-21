@@ -46,7 +46,11 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
   const year = date.getFullYear();
   {
     for (let i = year; i > 1970; i--) {
-      options.push(<option value={i}>{i}</option>);
+      options.push(
+        <option value={i} key={i}>
+          {i}
+        </option>
+      );
     }
   }
 

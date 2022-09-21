@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, SimpleGrid, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import Step1 from "../components/forms/Step1";
 import Step2 from "../components/forms/Step2";
