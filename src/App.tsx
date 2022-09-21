@@ -5,6 +5,7 @@ import NavBar from "./components/nav/NavBar";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Input from "./pages/Input";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
   return (
