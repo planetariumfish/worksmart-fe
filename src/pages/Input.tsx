@@ -20,7 +20,7 @@ const Input = (props: Props) => {
     try{
       const user = await axios.get("http://localhost:8080/api/user/validate", {withCredentials: true});
       console.log(user.data[0]);
-      // setUser(user.data);
+      setUser(user.data);
     }catch(err){
       console.log(err);
     }
