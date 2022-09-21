@@ -5,8 +5,13 @@ import {
   Flex,
   Heading,
   HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Spacer,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../contexts/user.context";
@@ -42,12 +47,27 @@ const NavBar = (props: Props) => {
           <Button size="sm" my={1} onClick={() => navigate("/input")}>
             Input Info
           </Button>
-          <Avatar
-            size="sm"
-            src={user.photo || ""}
-            name={user.name}
-            bg="teal.100"
-          />
+          <Menu>
+            <MenuButton
+              as={Avatar}
+              aria-label={user.name}
+              size="sm"
+              bg="teal.100"
+              src={user.photo || ""}
+              _hover={{ cursor: "pointer" }}
+            />
+            <MenuList>
+              <MenuItem
+                onClick={() => {
+                  axios.get("/api/user/logout");
+                  if (setUser) setUser(null);
+                  navigate("/");
+                }}
+              >
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </HStack>
       )}
     </Flex>
