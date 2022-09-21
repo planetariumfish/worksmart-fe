@@ -63,6 +63,10 @@ const Dashboard = (props: Props) => {
     }
   };
 
+  React.useEffect(() => {
+    validateUser();
+  }, []);
+
   return (
     <div className="d-flex justify-content-center ms-5">
       <Chart
