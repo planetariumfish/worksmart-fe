@@ -2,6 +2,7 @@ import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
 import Step1 from "../components/forms/Step1";
 import Step2 from "../components/forms/Step2";
+import Step3 from "../components/forms/Step3";
 import { FinancialPicture } from "../types/types";
 
 type Props = {};
@@ -27,12 +28,14 @@ const Input = (props: Props) => {
         {step === 2 && (
           <Step2 info={info} setInfo={setInfo} setStep={setStep} />
         )}
-        {step === 3 && <></>}
+        {step === 3 && (
+          <Step3 info={info} setInfo={setInfo} setStep={setStep} />
+        )}
         {step === 4 && <></>}
         <Box mt={5}>
           <SimpleGrid gap={2} columns={4}>
             <Box
-              bg={step === 1 ? "teal.500" : "gray.200"}
+              bg={step === 1 ? "teal.500" : "gray.300"}
               color={step === 1 ? "white" : "black"}
               p="0.5rem 1rem"
               onClick={() => setStep(1)}
@@ -42,7 +45,7 @@ const Input = (props: Props) => {
               <Text as="b">Costs & Revenues</Text>
             </Box>
             <Box
-              bg={step === 2 ? "teal.500" : "gray.200"}
+              bg={step === 2 ? "teal.500" : "gray.300"}
               color={step === 2 ? "white" : "black"}
               p="0.5rem 1rem"
               onClick={() => setStep(2)}
@@ -52,7 +55,7 @@ const Input = (props: Props) => {
               <Text as="b">Long Term A & L</Text>
             </Box>
             <Box
-              bg={step === 3 ? "teal.500" : "gray.200"}
+              bg={step === 3 ? "teal.500" : "gray.300"}
               color={step === 3 ? "white" : "black"}
               p="0.5rem 1rem"
               onClick={() => setStep(3)}
@@ -62,7 +65,7 @@ const Input = (props: Props) => {
               <Text as="b">Current A & L</Text>
             </Box>
             <Box
-              bg={step === 4 ? "teal.500" : "gray.200"}
+              bg={step === 4 ? "teal.500" : "gray.300"}
               color={step === 4 ? "white" : "black"}
               p="0.5rem 1rem"
               onClick={() => setStep(4)}

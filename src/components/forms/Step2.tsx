@@ -125,7 +125,7 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
           </FormControl>
         </HStack>
       </Box>
-      <HStack w="100%">
+      <HStack w="100%" my={3}>
         <Spacer />
         <Button
           mt={4}

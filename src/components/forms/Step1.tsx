@@ -146,7 +146,7 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
           </FormErrorMessage>
         </FormControl>
       </SimpleGrid>
-      <HStack w="100%">
+      <HStack w="100%" my={3}>
         <Spacer />
         <Button
           mt={4}
