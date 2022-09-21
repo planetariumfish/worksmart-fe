@@ -13,20 +13,6 @@ const Input = (props: Props) => {
   const [step, setStep] = React.useState<number>(1);
   const [info, setInfo] = React.useState<FinancialPicture | {}>({});
 
-  const [user, setUser] = React.useState<object>({});
-
-  const validateUser = async () => {
-    try {
-      const user = await axios.get("/api/user/validate", {
-        withCredentials: true,
-      });
-      console.log(user.data[0]);
-      // setUser(user.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   return (
     <Box w="80%" minH="60vh" px="2rem" display="flex" justifyContent="center">
       <Box
