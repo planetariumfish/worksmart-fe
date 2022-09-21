@@ -14,7 +14,7 @@ const UserProvider = ({ children }: Props) => {
     const getUserOnLoad = async () => {
       const login = await axios.get("/api/user/validate");
       if (login.data) {
-        setUser(login.data);
+        setUser(login.data[0]);
       }
     };
     getUserOnLoad();

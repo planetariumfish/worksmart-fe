@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Heading, Spacer } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Spacer,
+} from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../contexts/user.context";
@@ -30,9 +38,17 @@ const NavBar = (props: Props) => {
       </Heading>
       <Spacer />
       {user && (
-        <Button size="sm" my={1} onClick={() => navigate("/input")}>
-          Input Info
-        </Button>
+        <HStack gap={3}>
+          <Button size="sm" my={1} onClick={() => navigate("/input")}>
+            Input Info
+          </Button>
+          <Avatar
+            size="sm"
+            src={user.photo || ""}
+            name={user.name}
+            bg="teal.100"
+          />
+        </HStack>
       )}
     </Flex>
   );
