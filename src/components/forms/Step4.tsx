@@ -36,7 +36,7 @@ const Step2 = ({ info, setInfo, setStep }: Props) => {
   const navigate = useNavigate();
 
   function onSubmit(values: FormInput) {
-    if (info) setInfo({ ...info, ...values });
+    setInfo({ ...info, ...values });
     if (Object.keys(info).length > 0) mutate(info as FinancialPicture);
   }
 

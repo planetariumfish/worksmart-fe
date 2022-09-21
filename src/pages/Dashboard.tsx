@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import React from "react";
 import { Chart } from "react-google-charts";
 import { User } from "../contexts/user.context";
@@ -51,24 +52,8 @@ export const options = {
 };
 
 const Dashboard = (props: Props) => {
-  const { user, setUser } = React.useContext(User);
-
-  const validateUser = async () => {
-    try {
-      const user = await axios.get("/api/user/validate");
-      console.log(user.data[0]);
-      // setUser(user.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  React.useEffect(() => {
-    validateUser();
-  }, []);
-
   return (
-    <div className="d-flex justify-content-center ms-5">
+    <Flex justify="center" w="100%">
       <Chart
         chartType="BarChart"
         data={data}
@@ -76,7 +61,7 @@ const Dashboard = (props: Props) => {
         width="100%"
         height="400px"
       />
-    </div>
+    </Flex>
   );
 };
 
