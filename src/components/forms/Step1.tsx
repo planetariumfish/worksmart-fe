@@ -45,7 +45,7 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
   const date = new Date();
   const year = date.getFullYear();
   {
-    for (let i = year; i > 1970; i--) {
+    for (let i = year; i > year - 25; i--) {
       options.push(
         <option value={i} key={i}>
           {i}
@@ -70,7 +70,6 @@ const Step1 = ({ info, setInfo, setStep }: Props) => {
           <Select
             bg="white"
             id="year"
-            placeholder="Choose year"
             {...register("year", {
               required: "This is required",
             })}
