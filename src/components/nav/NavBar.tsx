@@ -20,11 +20,16 @@ const NavBar = (props: Props) => {
       px="0.5rem"
       sx={{ zIndex: 10 }}
     >
-      <Heading color="white" size="lg">
+      <Heading
+        color="white"
+        size="lg"
+        _hover={{ cursor: "pointer" }}
+        onClick={() => navigate("/")}
+      >
         WorkSmart
       </Heading>
       <Spacer />
-      {!user && (
+      {user && (
         <Button size="sm" my={1} onClick={() => navigate("/input")}>
           Input Info
         </Button>
