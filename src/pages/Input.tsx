@@ -5,7 +5,6 @@ import Step2 from "../components/forms/Step2";
 import Step3 from "../components/forms/Step3";
 import Step4 from "../components/forms/Step4";
 import { FinancialPicture } from "../types/types";
-import axios from "../utils/axiosClient";
 
 type Props = {};
 
