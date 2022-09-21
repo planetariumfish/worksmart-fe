@@ -1,10 +1,12 @@
 import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import React from "react";
+import { FinancialPicture } from "../types/types";
 
 type Props = {};
 
 const Input = (props: Props) => {
   const [step, setStep] = React.useState<number>(1);
+  const [info, setInfo] = React.useState<FinancialPicture | {}>();
 
   return (
     <Box w="80%" minH="60vh" px="2rem" display="flex" justifyContent="center">
