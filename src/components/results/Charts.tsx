@@ -15,6 +15,17 @@ type Props = {
 
 const Charts = ({result}: Props) => {
 
+
+const sort = []
+
+
+
+for (const key in result) {
+ 
+ 
+}
+
+
 const data = [
   [
     "Element",
@@ -27,6 +38,10 @@ const data = [
       calc: "stringify",
     },
   ],
+
+
+
+
   ["Average Collection Days", result[" Average Collection Days"
 ], "#b87333", null],
   [" Cash Flow to Sales"
