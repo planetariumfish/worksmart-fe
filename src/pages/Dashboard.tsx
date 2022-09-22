@@ -4,6 +4,8 @@ import Score from "../components/results/Score";
 import Stars from "../components/results/Stars";
 import { User } from "../contexts/user.context";
 import axios from "../utils/axiosClient";
+import Advices from "../components/Advices";
+import { Box} from "@chakra-ui/react";
 
 type Props = {};
 
@@ -29,7 +31,7 @@ const Dashboard = (props: Props) => {
   };
 
   return (
-    <div className="d-flex justify-content-center ms-5">
+    <div className="d-flex justify-content-center ms-5 flex-column">
       <Stars score={score} />
       <Score score={score} />
       <Charts result={result} />
