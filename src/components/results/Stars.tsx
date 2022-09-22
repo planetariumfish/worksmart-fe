@@ -10,12 +10,7 @@ const Stars = ({ score }: Props) => {
   const rating: React.ReactNode[] = [];
   const makeStars = () => {
     const percentage = Math.floor(score * 100);
-    let stars;
-    if (percentage <= 20) stars = 1;
-    else if (percentage <= 40) stars = 2;
-    else if (percentage <= 60) stars = 3;
-    else if (percentage <= 80) stars = 4;
-    else stars = 5;
+    const stars = Math.ceil(percentage / 20);
 
     for (let i = 0; i < 5; i++) {
       rating.push(i < stars ? <BsStarFill /> : <BsStar />);
