@@ -1,5 +1,6 @@
 import React from "react";
 import Charts from "../components/results/Charts";
+import Score from "../components/results/Score";
 import Stars from "../components/results/Stars";
 import { User } from "../contexts/user.context";
 import axios from "../utils/axiosClient";
@@ -30,6 +31,7 @@ const Dashboard = (props: Props) => {
   return (
     <div className="d-flex justify-content-center ms-5">
       <Stars score={score} />
+      <Score score={score} />
       <Charts result={result} />
     </div>
   );
