@@ -47,7 +47,7 @@ const data = [
   [" Cash Flow to Sales"
   , result[" Cash Flow to Sales"
 
-], "319795", null],
+], "#81E6D9", null],
   [" Cash Reinvestment %"
 
   , result[" Cash Reinvestment %"
@@ -57,7 +57,7 @@ const data = [
   [" Current Ratio"
   , result[" Current Ratio"
 
-], "color: 319795", null],
+], "color: #81E6D9", null],
   [" Equity to Liability"
 
   , result[" Equity to Liability"
@@ -86,13 +86,13 @@ const data = [
   , result[" Quick Ratio"
 ], "color: #81E6D9", null],
   [" Realized Sales Gross Profit Growth Rate", result[" Realized Sales Gross Profit Growth Rate"
-], "color: #319795", null],
+], "color: #81E6D9", null],
   [" Regular Net Profit Growth Rate", result[" Regular Net Profit Growth Rate"
 ], "color: #81E6D9", null],
   [" Research and development expense rate"
   , result[" Research and development expense rate"
 
-], "color: #319795", null],
+], "color: #81E6D9", null],
   [" Retained Earnings to Total Assets", result[" Retained Earnings to Total Assets"
 ], "color: #81E6D9", null],
 ];
