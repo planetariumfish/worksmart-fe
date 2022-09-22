@@ -1,6 +1,6 @@
 import { Center, Image, Text, VStack } from "@chakra-ui/react";
 import React from "react";
-import logo from "../assets/logo.png";
+import logo from "../assets/WORKSMART-01.png";
 import GoogleButton from "react-google-button";
 
 type Props = {};
@@ -10,7 +10,7 @@ const Home = (props: Props) => {
     <Center>
       <VStack>
         <Text mt={5}>Take your business to the next level</Text>
-        <Image src={logo} />
+        <Image src={logo} maxH="70vh" />
         <GoogleButton
           className="mt-5"
           onClick={() => {
