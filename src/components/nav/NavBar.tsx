@@ -15,12 +15,22 @@ import axios from "../../utils/axiosClient";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../contexts/user.context";
+import axios from "../../utils/axiosClient";
 
 type Props = {};
 
 const NavBar = (props: Props) => {
   const { user, setUser } = React.useContext(User);
   const navigate = useNavigate();
+
+  const subscribe = async () => {
+    try {
+      const res = await axios.get("/api/user/subscribe");
+      window.location.href = res.data.url
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <Flex
@@ -44,6 +54,7 @@ const NavBar = (props: Props) => {
       <Spacer />
       {user && (
         <HStack gap={3}>
+          <Button size="sm" my={1} onClick={subscribe}>Subscribe</Button>
           <Button size="sm" my={1} onClick={() => navigate("/input")}>
             Input Info
           </Button>
