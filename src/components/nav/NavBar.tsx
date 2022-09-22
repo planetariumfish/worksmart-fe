@@ -15,7 +15,7 @@ import axios from "../../utils/axiosClient";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../contexts/user.context";
-import axios from "../../utils/axiosClient";
+
 
 type Props = {};
 
